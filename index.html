@@ -109,6 +109,17 @@
   }
   #globe-canvas{opacity:.92;}
 
+  #doc-experience{position:relative;}
+  #globe-bg-wrap{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:640px;height:640px;
+    display:flex;align-items:center;justify-content:center;
+    pointer-events:none;z-index:0;
+  }
+  #globe-canvas-exp{opacity:.14;}
+  #doc-experience > h1, #doc-experience > .item{position:relative;z-index:1;}
+
   .doc h1{font-size:2.2rem;font-weight:700;margin-bottom:26px;}
   .doc h2.inner{
     font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
@@ -258,6 +269,7 @@
         </div>
 
         <div class="docpage" id="doc-experience">
+          <div id="globe-bg-wrap"><canvas id="globe-canvas-exp" width="640" height="640"></canvas></div>
           <h1>Experience</h1>
 
           <div class="item">
@@ -475,12 +487,13 @@
     el.addEventListener('click', function(){ openDoc(this.dataset.doc); });
   });
 
-  // dotted rotating globe
-  (function(){
-    var canvas = document.getElementById('globe-canvas');
+  // dotted rotating globe (reusable for multiple canvases)
+  function initGlobe(canvasId, radiusRatio, speed, dotColor){
+    var canvas = document.getElementById(canvasId);
+    if(!canvas) return;
     var ctx = canvas.getContext('2d');
     var W = canvas.width, H = canvas.height;
-    var R = 165, cx = W/2, cy = H/2;
+    var R = Math.min(W,H)/2 * (radiusRatio || 0.72), cx = W/2, cy = H/2;
     var pts = [];
     var rings = 30, perRing = 46;
     for(var i=0;i<rings;i++){
@@ -497,10 +510,10 @@
         });
       }
     }
-    var angle = 0;
+    var angle = Math.random() * Math.PI * 2;
     function draw(){
       ctx.clearRect(0,0,W,H);
-      angle += 0.005;
+      angle += (speed || 0.005);
       var cosA = Math.cos(angle), sinA = Math.sin(angle);
       var proj = pts.map(function(p){
         var x = p.x*cosA - p.z*sinA;
@@ -515,13 +528,15 @@
         var size = 0.8 + p.scale * 1.8;
         ctx.beginPath();
         ctx.arc(p.sx, p.sy, size, 0, Math.PI*2);
-        ctx.fillStyle = 'rgba(23,23,23,' + alpha.toFixed(2) + ')';
+        ctx.fillStyle = (dotColor || 'rgba(23,23,23,') + alpha.toFixed(2) + ')';
         ctx.fill();
       });
       requestAnimationFrame(draw);
     }
     draw();
-  })();
+  }
+  initGlobe('globe-canvas', 0.72, 0.005);
+  initGlobe('globe-canvas-exp', 0.72, 0.0035);
 </script>
 
 </body>
