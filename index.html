@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Işıl Durmuş | GeoAI Geliştiricisi</title>
+<meta name="description" content="Işıl Durmuş — Geomatik Mühendisliği, GeoAI ve mekânsal veri odaklı projeler portfolyosu.">
+<style>
+  :root{
+    --navy:#0f2540;
+    --navy-2:#16344f;
+    --accent:#c8a25c;
+    --bg:#f7f5f0;
+    --text:#1c2a33;
+    --muted:#5b6b76;
+    --card:#ffffff;
+    --border:#e4e1d8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Georgia', 'Times New Roman', serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+  }
+  a{color:inherit;text-decoration:none;}
+  header{
+    background:linear-gradient(135deg,var(--navy) 0%, var(--navy-2) 100%);
+    color:#f5f3ee;
+    padding:64px 24px 56px;
+    text-align:center;
+    position:relative;
+  }
+  header .eyebrow{
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--accent);
+    font-family:Arial, sans-serif;
+    margin-bottom:14px;
+  }
+  header h1{
+    font-size:2.6rem;
+    font-weight:400;
+    letter-spacing:1px;
+  }
+  header p.role{
+    margin-top:10px;
+    font-size:1.05rem;
+    color:#cfd7de;
+    font-family:Arial, sans-serif;
+  }
+  nav{
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:36px;
+    padding:16px 12px;
+    flex-wrap:wrap;
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  nav a{color:var(--muted); transition:color .2s;}
+  nav a:hover{color:var(--navy);}
+  main{max-width:920px;margin:0 auto;padding:0 24px;}
+  section{padding:56px 0;border-bottom:1px solid var(--border);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-size:1.55rem;
+    font-weight:400;
+    color:var(--navy);
+    margin-bottom:22px;
+    position:relative;
+    padding-bottom:12px;
+  }
+  h2::after{
+    content:"";
+    position:absolute;
+    left:0;bottom:0;
+    width:48px;height:2px;
+    background:var(--accent);
+  }
+  #about p{font-size:1.05rem;color:var(--text);max-width:760px;}
+  .contact-row{
+    display:flex;flex-wrap:wrap;gap:20px;margin-top:22px;
+    font-family:Arial, sans-serif;font-size:14px;color:var(--muted);
+  }
+  .contact-row a{color:var(--navy-2);border-bottom:1px solid var(--border);}
+  .contact-row a:hover{border-color:var(--accent);}
+  .skills-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:14px;margin-top:8px;
+  }
+  .skill-tag{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    padding:12px 16px;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    color:var(--text);
+  }
+  .project{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:4px;
+    padding:26px 28px;
+    margin-bottom:20px;
+  }
+  .project h3{
+    font-size:1.15rem;
+    color:var(--navy);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .project .status{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding:3px 10px;
+    border-radius:12px;
+    margin-bottom:12px;
+  }
+  .status.done{background:#e6f0e6;color:#2f6b2f;}
+  .status.progress{background:#fbeedb;color:#a5701c;}
+  .project p{font-size:.98rem;color:var(--muted);}
+  .edu-item{margin-bottom:18px;}
+  .edu-item .title{font-weight:600;color:var(--navy);}
+  .edu-item .sub{font-family:Arial, sans-serif;font-size:13px;color:var(--muted);}
+  footer{
+    text-align:center;
+    padding:40px 24px 60px;
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    color:var(--muted);
+  }
+  @media(max-width:600px){
+    header h1{font-size:1.9rem;}
+    nav ul{gap:18px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Portfolyo</div>
+  <h1>Işıl Durmuş</h1>
+  <p class="role">Geomatik Mühendisliği · GeoAI &amp; Mekânsal Veri Geliştiricisi</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">Hakkımda</a></li>
+    <li><a href="#skills">Yetkinlikler</a></li>
+    <li><a href="#projects">Projeler</a></li>
+    <li><a href="#education">Eğitim &amp; Staj</a></li>
+    <li><a href="#contact">İletişim</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="about">
+    <h2>Hakkımda</h2>
+    <p>
+      İstanbul Teknik Üniversitesi Geomatik Mühendisliği son sınıf öğrencisi ve mekânsal verilere
+      odaklanmış bir Yapay Zekâ (GeoAI) geliştiricisiyim. Eğitim hayatım boyunca Python, FastAPI ve
+      Docker ekosistemini kullanarak otonom ve akıllı sistem mimarileri geliştirmeye odaklandım.
+      Geliştirdiğim projeler arasında 7 farklı büyük dil modelini eş zamanlı yöneten otonom bir CBS
+      ajan platformu, doğal dil destekli akıllı veri sorgulama motoru (GeoChat/RAG) ve pekiştirmeli
+      öğrenme tabanlı robotik rota optimizasyon simülasyonları yer almaktadır. Harita Genel
+      Müdürlüğü'ndeki (MSB) mühendislik stajımdan edindiğim veri doğruluğu disiplinini, yapay zekânın
+      sınırlarını zorlayan otonom ve akıllı CBS projelerine aktarmayı amaçlıyorum.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Yetkinlikler</h2>
+    <div class="skills-grid">
+      <div class="skill-tag">Python / FastAPI</div>
+      <div class="skill-tag">Docker &amp; Containerization</div>
+      <div class="skill-tag">PostgreSQL / Supabase</div>
+      <div class="skill-tag">Büyük Dil Modeli Entegrasyonu (LLM)</div>
+      <div class="skill-tag">RAG &amp; Doğal Dil İşleme</div>
+      <div class="skill-tag">Coğrafi Bilgi Sistemleri (CBS/GIS)</div>
+      <div class="skill-tag">ArcGIS Pro</div>
+      <div class="skill-tag">Q-Learning / Pekiştirmeli Öğrenme</div>
+      <div class="skill-tag">Streamlit</div>
+      <div class="skill-tag">Maplibre.js / GeoJSON</div>
+      <div class="skill-tag">n8n Otomasyon</div>
+      <div class="skill-tag">Çok Kriterli Karar Verme (MCDA/FAHP)</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projeler</h2>
+
+    <div class="project">
+      <h3>Yapay Zeka Destekli Otonom Sistemlerle CBS İş Akışlarının Otomasyonu ve Mekansal Analizi (Bitirme Projesi)</h3>
+      <span class="status done">Tamamlandı</span>
+      <p>
+        Kullanıcıların teknik CBS komut sözdizimini bilmesine gerek kalmadan doğal Türkçe dilinde
+        mekânsal sorgular yapabilmesini sağlayan uçtan uca bir web platformu: GIS Agent Console.
+        Python/FastAPI tabanlı arka uç, asyncio mimarisiyle kullanıcı sorgularını n8n otomasyon
+        web kancaları üzerinden 7 farklı büyük dil modeline (Claude, GPT, Llama, Gemini, DeepSeek,
+        Qwen, GLM) eş zamanlı iletmektedir. Sonuçlar Maplibre.js ile dinamik GeoJSON katmanları
+        olarak gerçek zamanlı görselleştirilir. Projenin bilimsel katkısı, modellerin CBS
+        yeteneklerini ölçmek için tasarladığım GeoBenchX değerlendirme çerçevesidir; sorguları
+        mekânsal analiz kategorilerine atayarak ArcGIS Pro ground truth referanslarıyla
+        kıyaslamalı, 0-2 arası nesnel bir skor üretir.
+      </p>
+    </div>
+
+    <div class="project">
+      <h3>Hibrit Arama ve NLP Destekli Mekansal Karar Destek Sistemi (GeoChat)</h3>
+      <span class="status done">Tamamlandı</span>
+      <p>
+        İstanbul toplu taşıma verilerini İBB açık veri portalından alarak Supabase (PostgreSQL)
+        üzerinde modelledikten sonra, Groq API entegrasyonuyla kullanıcıların doğal dilde sorduğu
+        soruların anlık olarak SQL komutlarına dönüştürülmesini sağladım. Sistem önce yerel
+        veritabanını sorguluyor, veri mevcut değilse yapay zekânın kendi bilgisini devreye sokarak
+        her senaryoda yanıt üreten bir karar destek mekanizması sunuyor.
+      </p>
+    </div>
+
+    <div class="project">
+      <h3>İstanbul'daki Elektrikli Araç Şarj İstasyonlarının Erişilebilirliği ve Yer Seçimi Analizi</h3>
+      <span class="status done">Tamamlandı</span>
+      <p>
+        CBS ve Çok Kriterli Karar Verme (MCDA) yöntemlerini birleştiren bir yer seçimi analizini
+        ekip olarak kurguladık. Sosyal, ekonomik ve fiziksel 8 farklı kriteri anket sonuçları
+        doğrultusunda Bulanık Analitik Hiyerarşi Süreci (FAHP) ile ağırlıklandırarak şehrin
+        mekânsal uygunluk modellerini oluşturduk; yatırım maliyetlerini optimize eden stratejik
+        lokasyonlar belirledik.
+      </p>
+    </div>
+
+    <div class="project">
+      <h3>GeoAI Tabanlı Telekomünikasyon Optimizasyonu</h3>
+      <span class="status progress">Devam Ediyor</span>
+      <p>
+        Telekomünikasyon altyapı projelerinde karar destek süreçlerini optimize etmek amacıyla
+        FastAPI ve Streamlit tabanlı iki modüllü bir web uygulaması geliştiriyorum. İlk modülde
+        OpenStreetMap verilerini Dijkstra algoritmasıyla işleyerek fiber optik hatlar için maliyet
+        ve mesafe odaklı en kısa yol analizleri yapılıyor. İkinci modülde grid-based scoring
+        algoritmasıyla en verimli baz istasyonu konumlarını belirleyen bir optimizasyon motoru
+        geliştirdim. Docker containerization ile deployment süreçleri devam etmektedir.
+      </p>
+    </div>
+
+    <div class="project">
+      <h3>Robotik Hareket Planlamasında Geometrik Algoritmalar ve Q-Learning Tabanlı Engel Farkındalığı Analizi</h3>
+      <span class="status done">Tamamlandı</span>
+      <p>
+        Robotik hareket planlama süreçlerinde geleneksel geometrik algoritmalar ile pekiştirmeli
+        öğrenme (Q-Learning) yaklaşımlarının karşılaştırmalı analizi. Bir kat planı üzerinden grid
+        tabanlı çalışma ortamı oluşturularak A*, Dijkstra ve RRT algoritmaları ile Q-Learning
+        modelinin engel farkındalığı ve rota optimizasyonu performansları değerlendirildi.
+      </p>
+    </div>
+
+  </section>
+
+  <section id="education">
+    <h2>Eğitim &amp; Staj</h2>
+    <div class="edu-item">
+      <div class="title">İstanbul Teknik Üniversitesi — Geomatik Mühendisliği</div>
+      <div class="sub">Lisans, 4. Sınıf Öğrencisi</div>
+    </div>
+    <div class="edu-item">
+      <div class="title">Harita Genel Müdürlüğü (MSB) — Mühendislik Stajı</div>
+      <div class="sub">Veri doğruluğu ve mühendislik disiplini üzerine saha deneyimi</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>İletişim</h2>
+    <div class="contact-row">
+      <a href="mailto:isildurmus11@gmail.com">isildurmus11@gmail.com</a>
+      <a href="tel:+905075956517">+90 507 595 65 17</a>
+      <a href="https://github.com/isildurmuss" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Işıl Durmuş — Bu site GitHub Pages, Netlify veya Vercel üzerinden ücretsiz olarak yayınlanabilir.
+</footer>
+
+</body>
+</html>
