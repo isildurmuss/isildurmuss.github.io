@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isil Durmus</title>
-<meta name="description" content="Isil Durmus — Geomatics Engineer and GeoAI developer. Spatial data, GIS automation, agentic AI and LLM orchestration.">
+<title>Işıl Durmuş</title>
+<meta name="description" content="Işıl Durmuş — Geomatics Engineer and GeoAI developer. Spatial data, GIS automation, agentic AI and LLM orchestration.">
 <style>
   :root{
-    --bg:#000000;
-    --panel:#0c0c0c;
-    --line:#232323;
-    --text:#e9e9e7;
-    --muted:#8a8a88;
+    --bg:#ffffff;
+    --panel:#fcfcfc;
+    --line:#dfdfdf;
+    --text:#171717;
+    --muted:#7a7a7a;
     --red:#c2291f;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -24,7 +24,8 @@
     line-height:1.7;
   }
   a{color:inherit;text-decoration:none;}
-  ::selection{background:#3a1a17;color:#fff;}
+  button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit;}
+  ::selection{background:#f0d3cf;color:#000;}
 
   /* top bar */
   .topbar{
@@ -33,18 +34,26 @@
     border-bottom:1px solid var(--line);
     font-size:13px;
   }
-  .topbar .name{font-weight:700;letter-spacing:.5px;}
+  .topbar .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px;}
+  .topbar .brand .mark{
+    width:20px;height:20px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+    border:1px solid var(--line);
+  }
+  .topbar .brand .mark span:nth-child(1){background:var(--red);}
+  .topbar .brand .mark span:nth-child(4){background:#111;}
   .topbar nav{display:flex;gap:26px;flex-wrap:wrap;}
-  .topbar nav a{color:var(--text);}
-  .topbar nav a:hover{color:var(--red);}
-  .topbar .right{display:flex;align-items:center;gap:14px;}
-  .topbar .clock{color:var(--muted);font-size:12px;}
+  .topbar nav button{color:var(--muted);font-size:13px;}
+  .topbar nav button:hover, .topbar nav button.active{color:var(--text);}
+  .topbar .right{display:flex;align-items:center;gap:16px;}
+  .topbar .clock{color:var(--muted);font-size:12px;white-space:nowrap;}
   .topbar .mail-btn{
     border:1px solid var(--line);padding:8px 14px;font-size:12px;
     display:flex;flex-direction:column;align-items:flex-start;
   }
   .topbar .mail-btn span{font-size:10px;color:var(--muted);}
   .topbar .mail-btn:hover{border-color:var(--red);}
+  .topbar .micon{font-size:14px;color:var(--muted);cursor:pointer;}
+  .topbar .micon:hover{color:var(--red);}
 
   /* desktop layout */
   .desktop{
@@ -60,16 +69,16 @@
   }
   .icon{
     display:flex;flex-direction:column;align-items:center;gap:8px;
-    cursor:pointer;text-align:center;
+    cursor:pointer;text-align:center;width:100%;
   }
   .icon .glyph{
     width:44px;height:44px;border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;
     font-size:16px;color:var(--muted);
   }
-  .icon:hover .glyph{border-color:var(--red);color:var(--red);}
+  .icon:hover .glyph, .icon.active .glyph{border-color:var(--red);color:var(--red);}
   .icon .fname{font-size:10px;color:var(--muted);}
-  .icon .fsize{font-size:9px;color:#555;}
+  .icon .fsize{font-size:9px;color:#9a9a9a;}
 
   /* window */
   .window-wrap{padding:26px 26px 60px;}
@@ -79,27 +88,33 @@
   }
   .window-titlebar{
     display:flex;align-items:center;justify-content:space-between;
-    padding:10px 16px;border-bottom:1px solid var(--line);
-    font-size:12px;color:var(--muted);
+    padding:9px 14px;border-bottom:1px solid var(--line);
+    font-size:12px;color:var(--muted);gap:12px;
   }
+  .window-titlebar .wleft{display:flex;align-items:center;gap:12px;}
+  .window-titlebar .wleft .micon{font-size:12px;cursor:pointer;color:var(--muted);}
+  .window-titlebar .wleft .micon:hover{color:var(--red);}
   .window-titlebar .wtitle{color:var(--text);}
-  .window-titlebar .wctrls{display:flex;gap:14px;font-size:13px;color:var(--muted);}
+  .window-titlebar .wright{display:flex;align-items:center;gap:14px;}
+  .window-titlebar .wright .micon{font-size:12px;color:var(--muted);cursor:pointer;}
+  .window-titlebar .wctrls{display:flex;gap:12px;font-size:12px;color:var(--muted);}
 
   .doc{padding:44px 48px;position:relative;overflow:hidden;}
+  .docpage{display:none;}
+  .docpage.active{display:block;}
 
   #globe-wrap{
-    position:relative;height:280px;margin-bottom:20px;
+    position:relative;height:460px;margin-bottom:8px;
     display:flex;align-items:center;justify-content:center;
   }
-  #globe-canvas{opacity:.85;}
+  #globe-canvas{opacity:.92;}
 
   .doc h1{font-size:2.2rem;font-weight:700;margin-bottom:26px;}
-  .doc h2{
+  .doc h2.inner{
     font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
     color:var(--red);margin:44px 0 20px;
     padding-top:30px;border-top:1px solid var(--line);
   }
-  .doc h2:first-of-type{border-top:none;padding-top:0;margin-top:0;}
   .doc p{font-size:14px;color:var(--text);margin-bottom:16px;max-width:640px;}
   .doc p.muted{color:var(--muted);}
   .doc b{color:var(--text);}
@@ -110,7 +125,7 @@
   .item .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .item .title{font-size:14px;color:var(--text);font-weight:700;}
   .item .date{font-size:11px;color:var(--muted);white-space:nowrap;padding-top:2px;}
-  .item .place{font-size:12px;color:#b5877f;margin:3px 0 8px;}
+  .item .place{font-size:12px;color:#9a4a3f;margin:3px 0 8px;}
   .item ul{padding-left:18px;}
   .item li{font-size:13px;color:var(--muted);margin-bottom:5px;}
   .item p{font-size:13px;color:var(--muted);}
@@ -144,7 +159,7 @@
     padding:10px 28px;border-top:1px solid var(--line);
     font-size:11px;color:var(--muted);
   }
-  .statusbar .dot{color:#3fbf5f;}
+  .statusbar .dot{color:#2f9e4f;}
 
   @media(max-width:980px){
     .desktop{grid-template-columns:1fr;}
@@ -158,228 +173,253 @@
 <body>
 
 <div class="topbar">
-  <div class="name">Isil Durmus</div>
+  <div class="brand">
+    <div class="mark"><span></span><span></span><span></span><span></span></div>
+    Işıl Durmuş
+  </div>
   <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <button data-doc="about" class="active">About</button>
+    <button data-doc="experience">Experience</button>
+    <button data-doc="projects">Projects</button>
+    <button data-doc="education">Education</button>
+    <button data-doc="skills">Skills</button>
+    <button data-doc="contact">Contact</button>
   </nav>
   <div class="right">
     <span class="clock" id="clock">IST · —:—</span>
     <a class="mail-btn" href="mailto:isildurmus11@gmail.com">Send me an email<span>I reply within hours</span></a>
+    <span class="micon">🔍</span>
+    <span class="micon">☰</span>
   </div>
 </div>
 
 <div class="desktop">
 
   <div class="icons">
-    <a class="icon" href="#about"><div class="glyph">▤</div><div class="fname">about.md</div><div class="fsize">4 KB</div></a>
-    <a class="icon" href="#experience"><div class="glyph">▥</div><div class="fname">experience.md</div><div class="fsize">6 KB</div></a>
-    <a class="icon" href="#projects"><div class="glyph">▦</div><div class="fname">projects.md</div><div class="fsize">12 KB</div></a>
-    <a class="icon" href="#education"><div class="glyph">▧</div><div class="fname">education.md</div><div class="fsize">2 KB</div></a>
-    <a class="icon" href="#skills"><div class="glyph">▨</div><div class="fname">skills.md</div><div class="fsize">3 KB</div></a>
-    <a class="icon" href="#contact"><div class="glyph">▩</div><div class="fname">contact.md</div><div class="fsize">1 KB</div></a>
+    <div class="icon active" data-doc="about"><div class="glyph">▤</div><div class="fname">about.md</div><div class="fsize">4 KB</div></div>
+    <div class="icon" data-doc="experience"><div class="glyph">▥</div><div class="fname">experience.md</div><div class="fsize">6 KB</div></div>
+    <div class="icon" data-doc="projects"><div class="glyph">▦</div><div class="fname">projects.md</div><div class="fsize">12 KB</div></div>
+    <div class="icon" data-doc="education"><div class="glyph">▧</div><div class="fname">education.md</div><div class="fsize">2 KB</div></div>
+    <div class="icon" data-doc="skills"><div class="glyph">▨</div><div class="fname">skills.md</div><div class="fsize">3 KB</div></div>
+    <div class="icon" data-doc="contact"><div class="glyph">▩</div><div class="fname">contact.md</div><div class="fsize">1 KB</div></div>
   </div>
 
   <div class="window-wrap">
     <div class="window">
       <div class="window-titlebar">
-        <div class="wtitle">About — isildurmus.github.io</div>
-        <div class="wctrls"><span>–</span><span>▢</span><span>×</span></div>
+        <div class="wleft">
+          <span class="micon">☰</span>
+          <span class="micon">‹</span>
+          <span class="micon">›</span>
+          <span class="micon">↻</span>
+        </div>
+        <div class="wtitle" id="wtitle">About — isildurmuss.github.io</div>
+        <div class="wright">
+          <span class="micon">🔍</span>
+          <span class="micon">☆</span>
+          <div class="wctrls"><span>–</span><span>▢</span><span>×</span></div>
+        </div>
       </div>
 
       <div class="doc">
 
-        <div id="globe-wrap"><canvas id="globe-canvas" width="360" height="280"></canvas></div>
+        <div class="docpage active" id="doc-about">
+          <div id="globe-wrap"><canvas id="globe-canvas" width="560" height="460"></canvas></div>
 
-        <h1>About</h1>
+          <h1>About</h1>
 
-        <p>Hey,</p>
-        <p>
-          I'm Isil — a Geomatics Engineer and GeoAI developer based in Istanbul. This is where
-          I share the systems I build at the intersection of spatial data, automation and
-          large language models.
-        </p>
-
-        <h2 id="about">Story</h2>
-        <p>
-          I'm a Geomatics Engineering graduate from Istanbul Technical University, currently
-          pursuing an MSc in the same field. Across my studies and internships I've focused on
-          building fully autonomous, intelligent system architectures on the Python, FastAPI
-          and Docker ecosystem.
-        </p>
-        <p>
-          Among the systems I've built are an autonomous GIS agent platform orchestrating 7
-          different LLMs simultaneously, a natural-language-powered spatial query engine
-          (GeoChat/RAG), and an AI-powered automation pipeline that handles document
-          validation, vector search and reviewer assignment end-to-end.
-        </p>
-        <p>
-          My engineering internship at the General Directorate of Mapping (Ministry of
-          National Defense) instilled a discipline for data accuracy that I now carry into
-          autonomous, intelligent GIS projects that push the boundaries of what AI can do
-          spatially.
-        </p>
-        <p class="muted">
-          <b>Email:</b> <a class="inline" href="mailto:isildurmus11@gmail.com">isildurmus11@gmail.com</a>
-        </p>
-
-        <h2 id="experience">Experience</h2>
-
-        <div class="item">
-          <div class="row"><div class="title">IT Support Engineering Intern</div><div class="date">Jul 2026 — Present</div></div>
-          <div class="place">Baldem Information Technologies and Services (Gisoft) · Istanbul, TR</div>
-          <ul>
-            <li>Preprocessed and structured large-scale spatial datasets into high-quality pipelines for analytics and ML training.</li>
-            <li>Contributed to open-source web and mobile GIS applications, focusing on scalable data integration.</li>
-            <li>Designed database workflows to optimize geospatial queries and support decision-making systems.</li>
-            <li>Researched high-performance open-source alternatives to proprietary GIS software.</li>
-          </ul>
-        </div>
-
-        <div class="item">
-          <div class="row"><div class="title">Engineering Intern</div><div class="date">Jul — Aug 2025</div></div>
-          <div class="place">General Directorate of Mapping (HGM / Ministry of National Defense)</div>
-          <ul>
-            <li>Integrated Python, SQL and Docker into GIS applications, managing technical installation processes.</li>
-            <li>Performed data editing and spatial accuracy checks, reporting results using ArcGIS, QGIS and Netcad.</li>
-          </ul>
-        </div>
-
-        <div class="item">
-          <div class="row"><div class="title">Student Research Assistant — Project Based</div><div class="date">May — Sep 2025</div></div>
-          <div class="place">ITU GIS Laboratory · Istanbul, TR</div>
-          <ul>
-            <li>Led a literature review on optimal methodologies for real-time building type detection.</li>
-            <li>Evaluated YOLO and similar CV/ML frameworks for integration with spatial infrastructure.</li>
-          </ul>
-        </div>
-
-        <div class="item">
-          <div class="row"><div class="title">Team Leader &amp; Team Member — Exchange Departments</div><div class="date">2022</div></div>
-          <div class="place">AIESEC Turkey</div>
-          <ul>
-            <li>Led the Outgoing Exchange team and previously served on the Incoming Exchange team.</li>
-          </ul>
-        </div>
-
-        <h2 id="projects">Projects</h2>
-
-        <div class="item">
-          <div class="row"><div class="title">Project Application &amp; Evaluation Automation System</div><div class="date">Jun 2026 — Present</div></div>
-          <div class="place">Collaborative Project</div>
-          <span class="status-chip">In Progress</span>
+          <p>Hey,</p>
           <p>
-            End-to-end AI-powered n8n workflow automating project application intake, document
-            validation, vector database ingestion and reviewer assignment without human
-            intervention. Parallel PDF pipeline: one branch uses Gemini AI to validate 13
-            mandatory fields in natural language, the other embeds fields into Supabase
-            pgvector for semantic search (RAG). Automated Gmail notifications and a live
-            Google Sheets monitoring dashboard track every stage.
+            I'm Işıl — a Geomatics Engineer and GeoAI developer based in Istanbul. This is
+            where I share the systems I build at the intersection of spatial data, automation
+            and large language models.
+          </p>
+          <p>
+            I'm a Geomatics Engineering graduate from Istanbul Technical University, currently
+            pursuing an MSc in the same field. Across my studies and internships I've focused
+            on building fully autonomous, intelligent system architectures on the Python,
+            FastAPI and Docker ecosystem.
+          </p>
+          <p>
+            Among the systems I've built are an autonomous GIS agent platform orchestrating 7
+            different LLMs simultaneously, a natural-language-powered spatial query engine
+            (GeoChat/RAG), and an AI-powered automation pipeline that handles document
+            validation, vector search and reviewer assignment end-to-end.
+          </p>
+          <p>
+            My engineering internship at the General Directorate of Mapping (Ministry of
+            National Defense) instilled a discipline for data accuracy that I now carry into
+            autonomous, intelligent GIS projects that push the boundaries of what AI can do
+            spatially.
+          </p>
+          <p class="muted">
+            <b>Email:</b> <a class="inline" href="mailto:isildurmus11@gmail.com">isildurmus11@gmail.com</a>
           </p>
         </div>
 
-        <div class="item">
-          <div class="row"><div class="title">GIS Agent Console — Automation of GIS Workflows with AI-Powered Autonomous Systems (Graduation Project)</div><div class="date">Oct 2025 — Jun 2026</div></div>
-          <div class="place">Istanbul Technical University</div>
-          <span class="status-chip" style="color:var(--muted);border-color:var(--line)">Completed</span>
-          <p>
-            End-to-end web platform parsing natural-language spatial queries into live map
-            visualizations, bypassing traditional desktop GIS software. FastAPI + asyncio
-            backend broadcasts requests simultaneously across 7 distinct LLMs (Claude, GPT,
-            Gemini, DeepSeek, Qwen, Llama, GLM), orchestrated via LangGraph and RAG through
-            n8n. Outputs are transformed into valid GeoJSON for Maplibre.js rendering,
-            alongside a live dashboard benchmarking model latency and spatial precision.
-          </p>
+        <div class="docpage" id="doc-experience">
+          <h1>Experience</h1>
+
+          <div class="item">
+            <div class="row"><div class="title">IT Support Engineering Intern</div><div class="date">Jul 2026 — Present</div></div>
+            <div class="place">Baldem Information Technologies and Services (Gisoft) · Istanbul, TR</div>
+            <ul>
+              <li>Preprocessed and structured large-scale spatial datasets into high-quality pipelines for analytics and ML training.</li>
+              <li>Contributed to open-source web and mobile GIS applications, focusing on scalable data integration.</li>
+              <li>Designed database workflows to optimize geospatial queries and support decision-making systems.</li>
+              <li>Researched high-performance open-source alternatives to proprietary GIS software.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">Engineering Intern</div><div class="date">Jul — Aug 2025</div></div>
+            <div class="place">General Directorate of Mapping (HGM / Ministry of National Defense)</div>
+            <ul>
+              <li>Integrated Python, SQL and Docker into GIS applications, managing technical installation processes.</li>
+              <li>Performed data editing and spatial accuracy checks, reporting results using ArcGIS, QGIS and Netcad.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">Student Research Assistant — Project Based</div><div class="date">May — Sep 2025</div></div>
+            <div class="place">ITU GIS Laboratory · Istanbul, TR</div>
+            <ul>
+              <li>Led a literature review on optimal methodologies for real-time building type detection.</li>
+              <li>Evaluated YOLO and similar CV/ML frameworks for integration with spatial infrastructure.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">Team Leader &amp; Team Member — Exchange Departments</div><div class="date">2022</div></div>
+            <div class="place">AIESEC Turkey</div>
+            <ul>
+              <li>Led the Outgoing Exchange team and previously served on the Incoming Exchange team.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="item">
-          <div class="row"><div class="title">GeoAI-Based Telecommunications Optimization System</div><div class="date">Dec 2025 — Present</div></div>
-          <div class="place">Personal Project</div>
-          <span class="status-chip">In Progress</span>
-          <p>
-            FastAPI backend for automated multi-source feature enrichment using OSM and DEM
-            data, with an ML-powered prediction system for signal optimization. Redis caching
-            ensures high-performance, real-time data inputs.
-          </p>
+        <div class="docpage" id="doc-projects">
+          <h1>Projects</h1>
+
+          <div class="item">
+            <div class="row"><div class="title">Project Application &amp; Evaluation Automation System</div><div class="date">Jun 2026 — Present</div></div>
+            <div class="place">Collaborative Project</div>
+            <span class="status-chip">In Progress</span>
+            <p>
+              End-to-end AI-powered n8n workflow automating project application intake,
+              document validation, vector database ingestion and reviewer assignment without
+              human intervention. Parallel PDF pipeline: one branch uses Gemini AI to validate
+              13 mandatory fields in natural language, the other embeds fields into Supabase
+              pgvector for semantic search (RAG). Automated Gmail notifications and a live
+              Google Sheets monitoring dashboard track every stage.
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">GIS Agent Console — Automation of GIS Workflows with AI-Powered Autonomous Systems (Graduation Project)</div><div class="date">Oct 2025 — Jun 2026</div></div>
+            <div class="place">Istanbul Technical University</div>
+            <span class="status-chip" style="color:var(--muted);border-color:var(--line)">Completed</span>
+            <p>
+              End-to-end web platform parsing natural-language spatial queries into live map
+              visualizations, bypassing traditional desktop GIS software. FastAPI + asyncio
+              backend broadcasts requests simultaneously across 7 distinct LLMs (Claude, GPT,
+              Gemini, DeepSeek, Qwen, Llama, GLM), orchestrated via LangGraph and RAG through
+              n8n. Outputs are transformed into valid GeoJSON for Maplibre.js rendering,
+              alongside a live dashboard benchmarking model latency and spatial precision.
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">GeoAI-Based Telecommunications Optimization System</div><div class="date">Dec 2025 — Present</div></div>
+            <div class="place">Personal Project</div>
+            <span class="status-chip">In Progress</span>
+            <p>
+              FastAPI backend for automated multi-source feature enrichment using OSM and DEM
+              data, with an ML-powered prediction system for signal optimization. Redis caching
+              ensures high-performance, real-time data inputs.
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">Building-Based Seismic Risk &amp; Surface Analysis Modeling (Istanbul)</div><div class="date">Feb 2026 — Present</div></div>
+            <div class="place">Collaborative Project</div>
+            <span class="status-chip">In Progress</span>
+            <p>
+              Managing a large-scale geospatial database of 410,000+ records, applying spatial
+              analysis to generate actionable insights for disaster resilience. Uses Digital
+              Elevation Models (DEM) to produce thematic maps and analytical dashboards.
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">GeoChat — Hybrid Search &amp; NLP-Powered Spatial Decision Support</div><div class="date">2024</div></div>
+            <div class="place">Team Project</div>
+            <span class="status-chip" style="color:var(--muted);border-color:var(--line)">Completed</span>
+            <p>
+              Modeled Istanbul public transport data from the IBB open data portal in Supabase
+              (PostgreSQL), then used the Groq API to convert natural language questions into
+              SQL on the fly — falling back to the model's own knowledge when local data isn't
+              available.
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">EV Charging Station Accessibility &amp; Site Selection Analysis in Istanbul</div><div class="date">2024</div></div>
+            <div class="place">Team Project</div>
+            <span class="status-chip" style="color:var(--muted);border-color:var(--line)">Completed</span>
+            <p>
+              Combined GIS with Multi-Criteria Decision Analysis (MCDA), weighting 8 social,
+              economic and physical criteria via Fuzzy AHP to build spatial suitability models
+              and identify strategic, cost-optimal charging locations.
+            </p>
+          </div>
         </div>
 
-        <div class="item">
-          <div class="row"><div class="title">Building-Based Seismic Risk &amp; Surface Analysis Modeling (Istanbul)</div><div class="date">Feb 2026 — Present</div></div>
-          <div class="place">Collaborative Project</div>
-          <span class="status-chip">In Progress</span>
-          <p>
-            Managing a large-scale geospatial database of 410,000+ records, applying spatial
-            analysis to generate actionable insights for disaster resilience. Uses Digital
-            Elevation Models (DEM) to produce thematic maps and analytical dashboards.
-          </p>
+        <div class="docpage" id="doc-education">
+          <h1>Education</h1>
+          <div class="item">
+            <div class="row"><div class="title">MSc in Geomatics Engineering</div><div class="date">2026 — Present</div></div>
+            <div class="place">Istanbul Technical University · Istanbul, Turkey</div>
+          </div>
+          <div class="item">
+            <div class="row"><div class="title">BSc in Geomatics Engineering</div><div class="date">2021 — 2026</div></div>
+            <div class="place">Istanbul Technical University · Istanbul, Turkey · UAV Pilot License (IHA-1)</div>
+          </div>
         </div>
 
-        <div class="item">
-          <div class="row"><div class="title">GeoChat — Hybrid Search &amp; NLP-Powered Spatial Decision Support</div><div class="date">2024</div></div>
-          <div class="place">Team Project</div>
-          <span class="status-chip" style="color:var(--muted);border-color:var(--line)">Completed</span>
-          <p>
-            Modeled Istanbul public transport data from the IBB open data portal in Supabase
-            (PostgreSQL), then used the Groq API to convert natural language questions into SQL
-            on the fly — falling back to the model's own knowledge when local data isn't
-            available.
-          </p>
+        <div class="docpage" id="doc-skills">
+          <h1>Skills</h1>
+          <p class="muted"><b>GIS &amp; Remote Sensing</b></p>
+          <div class="tag-row">
+            <div class="tag">ArcGIS / QGIS</div><div class="tag">ESA SNAP</div><div class="tag">Netcad</div><div class="tag">Spatial Data Analysis</div>
+          </div>
+          <p class="muted"><b>Data &amp; Backend</b></p>
+          <div class="tag-row">
+            <div class="tag">PostgreSQL / PostGIS</div><div class="tag">Supabase</div><div class="tag">FastAPI / REST API</div><div class="tag">Redis</div>
+          </div>
+          <p class="muted"><b>Web Mapping &amp; UI</b></p>
+          <div class="tag-row">
+            <div class="tag">Leaflet.js / Maplibre.js</div><div class="tag">Streamlit</div><div class="tag">WebGIS Dashboards</div>
+          </div>
+          <p class="muted"><b>Automation &amp; Agentic AI</b></p>
+          <div class="tag-row">
+            <div class="tag">n8n</div><div class="tag">LangChain / LangGraph</div><div class="tag">MCP</div><div class="tag">RAG / RPA</div><div class="tag">Docker</div>
+          </div>
+          <p class="muted"><b>Languages</b></p>
+          <div class="tag-row">
+            <div class="tag">Turkish (Native)</div><div class="tag">English (B2)</div><div class="tag">German (A1)</div>
+          </div>
         </div>
 
-        <div class="item">
-          <div class="row"><div class="title">EV Charging Station Accessibility &amp; Site Selection Analysis in Istanbul</div><div class="date">2024</div></div>
-          <div class="place">Team Project</div>
-          <span class="status-chip" style="color:var(--muted);border-color:var(--line)">Completed</span>
-          <p>
-            Combined GIS with Multi-Criteria Decision Analysis (MCDA), weighting 8 social,
-            economic and physical criteria via Fuzzy AHP to build spatial suitability models
-            and identify strategic, cost-optimal charging locations.
-          </p>
-        </div>
-
-        <h2 id="education">Education</h2>
-        <div class="item">
-          <div class="row"><div class="title">MSc in Geomatics Engineering</div><div class="date">2026 — Present</div></div>
-          <div class="place">Istanbul Technical University · Istanbul, Turkey</div>
-        </div>
-        <div class="item">
-          <div class="row"><div class="title">BSc in Geomatics Engineering</div><div class="date">2021 — 2026</div></div>
-          <div class="place">Istanbul Technical University · Istanbul, Turkey · UAV Pilot License (IHA-1)</div>
-        </div>
-
-        <h2 id="skills">Skills</h2>
-        <p class="muted"><b>GIS &amp; Remote Sensing</b></p>
-        <div class="tag-row">
-          <div class="tag">ArcGIS / QGIS</div><div class="tag">ESA SNAP</div><div class="tag">Netcad</div><div class="tag">Spatial Data Analysis</div>
-        </div>
-        <p class="muted"><b>Data &amp; Backend</b></p>
-        <div class="tag-row">
-          <div class="tag">PostgreSQL / PostGIS</div><div class="tag">Supabase</div><div class="tag">FastAPI / REST API</div><div class="tag">Redis</div>
-        </div>
-        <p class="muted"><b>Web Mapping &amp; UI</b></p>
-        <div class="tag-row">
-          <div class="tag">Leaflet.js / Maplibre.js</div><div class="tag">Streamlit</div><div class="tag">WebGIS Dashboards</div>
-        </div>
-        <p class="muted"><b>Automation &amp; Agentic AI</b></p>
-        <div class="tag-row">
-          <div class="tag">n8n</div><div class="tag">LangChain / LangGraph</div><div class="tag">MCP</div><div class="tag">RAG / RPA</div><div class="tag">Docker</div>
-        </div>
-        <p class="muted"><b>Languages</b></p>
-        <div class="tag-row">
-          <div class="tag">Turkish (Native)</div><div class="tag">English (B2)</div><div class="tag">German (A1)</div>
-        </div>
-
-        <h2 id="contact">Contact</h2>
-        <p class="muted">Open to new opportunities and collaborations — feel free to reach out.</p>
-        <div class="contact-links">
-          <a href="mailto:isildurmus11@gmail.com">isildurmus11@gmail.com</a>
-          <a href="tel:+905075956517">+90 507 595 65 17</a>
-          <a href="https://github.com/isildurmuss" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/ışıldurmuş/" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="docpage" id="doc-contact">
+          <h1>Contact</h1>
+          <p class="muted">Open to new opportunities and collaborations — feel free to reach out.</p>
+          <div class="contact-links">
+            <a href="mailto:isildurmus11@gmail.com">isildurmus11@gmail.com</a>
+            <a href="tel:+905075956517">+90 507 595 65 17</a>
+            <a href="https://github.com/isildurmuss" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/ışıldurmuş/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
         </div>
 
       </div>
@@ -389,9 +429,9 @@
   <div class="side-right">
     <div class="badge">
       <div class="no">Nº 01</div>
-      <div class="nm">ISIL DURMUS</div>
+      <div class="nm">IŞIL DURMUŞ</div>
       <div>ISTANBUL · 2026</div>
-      <div>v 1.2.0</div>
+      <div>v 1.4.0</div>
     </div>
     <div class="coords">
       41.0082° N<br>
@@ -403,8 +443,8 @@
 </div>
 
 <div class="statusbar">
-  <div><span class="dot">●</span> IsilOS 1.2.0 · 1 document open · TR-EN</div>
-  <div>ready</div>
+  <div><span class="dot">●</span> IsilOS 1.4.0 · <span id="doccount">1</span> document open · TR-EN</div>
+  <div id="ready">ready</div>
 </div>
 
 <script>
@@ -415,14 +455,34 @@
   }
   tick(); setInterval(tick, 1000*30);
 
+  // document switching (mimics single-window OS file viewer)
+  var titles = {
+    about:'About', experience:'Experience', projects:'Projects',
+    education:'Education', skills:'Skills', contact:'Contact'
+  };
+  var opened = new Set(['about']);
+  function openDoc(id){
+    document.querySelectorAll('.docpage').forEach(function(p){p.classList.remove('active');});
+    document.getElementById('doc-'+id).classList.add('active');
+    document.querySelectorAll('.icon').forEach(function(i){i.classList.toggle('active', i.dataset.doc===id);});
+    document.querySelectorAll('.topbar nav button').forEach(function(b){b.classList.toggle('active', b.dataset.doc===id);});
+    document.getElementById('wtitle').textContent = titles[id] + ' — isildurmuss.github.io';
+    opened.add(id);
+    document.getElementById('doccount').textContent = opened.size;
+    document.getElementById('ready').textContent = 'ready';
+  }
+  document.querySelectorAll('.icon, .topbar nav button').forEach(function(el){
+    el.addEventListener('click', function(){ openDoc(this.dataset.doc); });
+  });
+
   // dotted rotating globe
   (function(){
     var canvas = document.getElementById('globe-canvas');
     var ctx = canvas.getContext('2d');
     var W = canvas.width, H = canvas.height;
-    var R = 100, cx = W/2, cy = H/2;
+    var R = 165, cx = W/2, cy = H/2;
     var pts = [];
-    var rings = 26, perRing = 40;
+    var rings = 30, perRing = 46;
     for(var i=0;i<rings;i++){
       var lat = Math.PI * (i/(rings-1) - 0.5);
       var ringR = Math.cos(lat);
@@ -440,27 +500,22 @@
     var angle = 0;
     function draw(){
       ctx.clearRect(0,0,W,H);
-      angle += 0.004;
+      angle += 0.005;
       var cosA = Math.cos(angle), sinA = Math.sin(angle);
       var proj = pts.map(function(p){
         var x = p.x*cosA - p.z*sinA;
         var z = p.x*sinA + p.z*cosA;
         var y = p.y;
         var scale = (z + 2) / 3;
-        return {
-          sx: cx + x * R,
-          sy: cy + y * R,
-          z: z,
-          scale: scale
-        };
+        return { sx: cx + x * R, sy: cy + y * R, z: z, scale: scale };
       });
       proj.sort(function(a,b){return a.z - b.z;});
       proj.forEach(function(p){
-        var alpha = 0.15 + (p.z+1)/2 * 0.65;
-        var size = 0.6 + p.scale * 1.4;
+        var alpha = 0.12 + (p.z+1)/2 * 0.75;
+        var size = 0.8 + p.scale * 1.8;
         ctx.beginPath();
         ctx.arc(p.sx, p.sy, size, 0, Math.PI*2);
-        ctx.fillStyle = 'rgba(233,233,231,' + alpha.toFixed(2) + ')';
+        ctx.fillStyle = 'rgba(23,23,23,' + alpha.toFixed(2) + ')';
         ctx.fill();
       });
       requestAnimationFrame(draw);
