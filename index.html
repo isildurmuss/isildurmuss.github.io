@@ -64,9 +64,11 @@
 
   .icons{
     padding:26px 16px;
-    display:flex;flex-direction:column;gap:22px;
+    display:grid;grid-template-columns:1fr 1fr;gap:20px 10px;
     border-right:1px solid var(--line);
+    align-content:start;
   }
+  .icon.big{grid-column:1 / -1;}
   .icon{
     display:flex;flex-direction:column;align-items:center;gap:8px;
     cursor:pointer;text-align:center;width:100%;
@@ -207,9 +209,9 @@
 <div class="desktop">
 
   <div class="icons">
-    <div class="icon active" data-doc="about"><div class="glyph">▤</div><div class="fname">about.md</div><div class="fsize">4 KB</div></div>
+    <div class="icon big active" data-doc="about"><div class="glyph">▤</div><div class="fname">about.md</div><div class="fsize">4 KB</div></div>
     <div class="icon" data-doc="experience"><div class="glyph">▥</div><div class="fname">experience.md</div><div class="fsize">6 KB</div></div>
-    <div class="icon" data-doc="projects"><div class="glyph">▦</div><div class="fname">projects.md</div><div class="fsize">12 KB</div></div>
+    <div class="icon" data-doc="projects"><div class="glyph">▦</div><div class="fname">projects.md</div><div class="fsize">13 KB</div></div>
     <div class="icon" data-doc="education"><div class="glyph">▧</div><div class="fname">education.md</div><div class="fsize">2 KB</div></div>
     <div class="icon" data-doc="skills"><div class="glyph">▨</div><div class="fname">skills.md</div><div class="fsize">3 KB</div></div>
     <div class="icon" data-doc="contact"><div class="glyph">▩</div><div class="fname">contact.md</div><div class="fsize">1 KB</div></div>
@@ -308,6 +310,16 @@
               <li>Led the Outgoing Exchange team and previously served on the Incoming Exchange team.</li>
             </ul>
           </div>
+
+          <div class="item">
+            <div class="row"><div class="title">Committee Member</div><div class="date">Oct 2023 — Jan 2025</div></div>
+            <div class="place">ITU Cyber Club</div>
+          </div>
+
+          <div class="item">
+            <div class="row"><div class="title">B2B Matchmaking Assistant</div><div class="date">Oct 2024</div></div>
+            <div class="place">SAHA EXPO International Defence &amp; Aerospace Exhibition</div>
+          </div>
         </div>
 
         <div class="docpage" id="doc-projects">
@@ -385,6 +397,18 @@
               and identify strategic, cost-optimal charging locations.
             </p>
           </div>
+
+          <div class="item">
+            <div class="row"><div class="title">Geometric Algorithms vs. Q-Learning in Robotic Motion Planning &amp; Obstacle Awareness</div><div class="date">2023</div></div>
+            <div class="place">Academic Project</div>
+            <span class="status-chip" style="color:var(--muted);border-color:var(--line)">Completed</span>
+            <p>
+              Comparative study of classical geometric algorithms against reinforcement learning
+              (Q-Learning) for robotic motion planning. Built a grid-based environment from a
+              floor plan and evaluated A*, Dijkstra and RRT algorithms against a Q-Learning model
+              on obstacle awareness and route optimization performance.
+            </p>
+          </div>
         </div>
 
         <div class="docpage" id="doc-education">
@@ -395,7 +419,13 @@
           </div>
           <div class="item">
             <div class="row"><div class="title">BSc in Geomatics Engineering</div><div class="date">2021 — 2026</div></div>
-            <div class="place">Istanbul Technical University · Istanbul, Turkey · UAV Pilot License (IHA-1)</div>
+            <div class="place">Istanbul Technical University · Istanbul, Turkey</div>
+          </div>
+          <p class="muted"><b>Certificates &amp; Licenses</b></p>
+          <div class="tag-row">
+            <div class="tag">UAV Pilot License (IHA-1)</div>
+            <div class="tag">TÜBİTAK Polar Science Festival — Certificate of Participation</div>
+            <div class="tag">SAHA EXPO Volunteer Certificate</div>
           </div>
         </div>
 
@@ -443,7 +473,7 @@
       <div class="no">Nº 01</div>
       <div class="nm">IŞIL DURMUŞ</div>
       <div>ISTANBUL · 2026</div>
-      <div>v 1.4.0</div>
+      <div>v 1.5.0</div>
     </div>
     <div class="coords">
       41.0082° N<br>
@@ -455,7 +485,7 @@
 </div>
 
 <div class="statusbar">
-  <div><span class="dot">●</span> IsilOS 1.4.0 · <span id="doccount">1</span> document open · TR-EN</div>
+  <div><span class="dot">●</span> IsilOS 1.5.0 · <span id="doccount">1</span> document open · TR-EN</div>
   <div id="ready">ready</div>
 </div>
 
