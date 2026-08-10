@@ -60,6 +60,7 @@
     display:grid;
     grid-template-columns:120px 1fr 210px;
     min-height:calc(100vh - 106px);
+    align-items:start;
   }
 
   .icons{
@@ -101,7 +102,7 @@
   .window-titlebar .wright .micon{font-size:12px;color:var(--muted);cursor:pointer;}
   .window-titlebar .wctrls{display:flex;gap:12px;font-size:12px;color:var(--muted);}
 
-  .doc{padding:44px 48px;position:relative;overflow:hidden;}
+  .doc{padding:44px 48px;position:relative;overflow:visible;}
   .docpage{display:none;}
   .docpage.active{display:block;}
 
@@ -473,7 +474,7 @@
       <div class="no">Nº 01</div>
       <div class="nm">IŞIL DURMUŞ</div>
       <div>ISTANBUL · 2026</div>
-      <div>v 1.5.0</div>
+      <div>v 1.5.1</div>
     </div>
     <div class="coords">
       41.0082° N<br>
@@ -485,7 +486,7 @@
 </div>
 
 <div class="statusbar">
-  <div><span class="dot">●</span> IsilOS 1.5.0 · <span id="doccount">1</span> document open · TR-EN</div>
+  <div><span class="dot">●</span> IsilOS 1.5.1 · <span id="doccount">1</span> document open · TR-EN</div>
   <div id="ready">ready</div>
 </div>
 
